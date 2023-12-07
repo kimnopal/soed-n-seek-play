@@ -18,8 +18,13 @@ public class Post extends Model {
 	private String _deskripsi;
 	private String _foto;
 	private String _tanggal_dibuat;
+    
+	@OneToMany
 	public Vector<Komentar> _komentar = new Vector<Komentar>();
+	@OneToMany
 	public Vector<Laporan> _laporan = new Vector<Laporan>();
+	@OneToMany
 	public Vector<Kontak> _kontak = new Vector<Kontak>();
+	@ManyToOne
 	public StatusKehilangan _status;
 }
