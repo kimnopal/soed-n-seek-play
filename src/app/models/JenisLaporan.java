@@ -15,5 +15,6 @@ import java.util.*;
 public class JenisLaporan extends Model {
 	private int _iD;
 	private String _value;
+	@OneToMany
 	public Vector<Laporan> _laporan = new Vector<Laporan>();
 }

@@ -16,7 +16,10 @@ public class Laporan extends Model {
 	private int _iD;
 	private String _value;
 	private String _tanggal_dibuat;
+	@ManyToOne
 	public Post _post;
+	@ManyToOne
 	public Mahasiswa _mhs;
+	@ManyToOne
 	public JenisLaporan _jenis;
 }

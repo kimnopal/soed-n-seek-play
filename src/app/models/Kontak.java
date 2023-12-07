@@ -16,5 +16,6 @@ public class Kontak extends Model {
 	private int _iD;
 	private String _jenis;
 	private String _value;
+	@ManyToOne
 	public Post _post;
 }

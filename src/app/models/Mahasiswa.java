@@ -15,7 +15,9 @@ import java.util.*;
 public class Mahasiswa extends User {
 	private String _nim;
 	private String _jurusan;
+	@OneToMany
 	public Vector<Komentar> _komentar = new Vector<Komentar>();
+	@OneToMany
 	public Vector<Laporan> _laporan = new Vector<Laporan>();
 
 	public void createComment() {
