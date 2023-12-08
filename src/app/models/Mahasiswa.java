@@ -12,13 +12,16 @@ import java.util.*;
 			@UniqueConstraint(columnNames = {"id"})
 		}
 )
+@DiscriminatorValue("mahasiswa")
 public class Mahasiswa extends User {
 	private String _nim;
 	private String _jurusan;
+	
 	@OneToMany
-	public Vector<Komentar> _komentar = new Vector<Komentar>();
+	public Collection<Komentar> _komentar;
+
 	@OneToMany
-	public Vector<Laporan> _laporan = new Vector<Laporan>();
+	public Collection<Laporan> _laporan;
 
 	public void createComment() {
 		throw new UnsupportedOperationException();
@@ -30,5 +33,37 @@ public class Mahasiswa extends User {
 
 	public void deleteComment() {
 		throw new UnsupportedOperationException();
+	}
+
+	public String get_nim() {
+		return this._nim;
+	}
+
+	public void set_nim(String _nim) {
+		this._nim = _nim;
+	}
+
+	public String get_jurusan() {
+		return this._jurusan;
+	}
+
+	public void set_jurusan(String _jurusan) {
+		this._jurusan = _jurusan;
+	}
+
+	public Collection<Komentar> get_komentar() {
+		return this._komentar;
+	}
+
+	public void set_komentar(Collection<Komentar> _komentar) {
+		this._komentar = _komentar;
+	}
+
+	public Collection<Laporan> get_laporan() {
+		return this._laporan;
+	}
+
+	public void set_laporan(Collection<Laporan> _laporan) {
+		this._laporan = _laporan;
 	}
 }
