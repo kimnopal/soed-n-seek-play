@@ -2,104 +2,106 @@ package models;
 
 import play.*;
 import play.db.jpa.*;
- 
+
 import javax.persistence.*;
 import java.util.*;
  
 @Entity
-@Table(name = "post",
-		uniqueConstraints = {
-			@UniqueConstraint(columnNames = {"id"})
-		}
-)
-public class Post extends Model {
-	private int _iD;
-	private String _judul;
-	private String _deskripsi;
-	private String _foto;
-	private String _tanggal_dibuat;
+@Table(name = "post")
+public class Post extends Model {	
+	private String judul;
+	private String deskripsi;
+	private String foto;
+
+	@Column(name = "tanggal_dibuat")
+	private String tanggalDibuat;
     
-	@OneToMany
-	public Collection<Komentar> _komentar;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	public User user;
+	
+	@OneToMany(mappedBy = "post")
+	public Collection<Komentar> komentar;
 
-	@OneToMany
-	public Collection<Laporan> _laporan;
+	@OneToMany(mappedBy = "post")
+	public Collection<Laporan> laporan;
 
-	@OneToMany
-	public Collection<Kontak> _kontak;
+	@OneToMany(mappedBy = "post")
+	public Collection<Kontak> kontak;
 
 	@ManyToOne
-	public StatusKehilangan _status;
+	@JoinColumn(name = "status_kehilangan_id")
+	public StatusKehilangan statusKehilangan;
 
-	public int get_iD() {
-		return this._iD;
+	public String getJudul() {
+		return this.judul;
 	}
 
-	public void set_iD(int _iD) {
-		this._iD = _iD;
+	public void setJudul(String judul) {
+		this.judul = judul;
 	}
 
-	public String get_judul() {
-		return this._judul;
+	public String getDeskripsi() {
+		return this.deskripsi;
 	}
 
-	public void set_judul(String _judul) {
-		this._judul = _judul;
+	public void setDeskripsi(String deskripsi) {
+		this.deskripsi = deskripsi;
 	}
 
-	public String get_deskripsi() {
-		return this._deskripsi;
+	public String getFoto() {
+		return this.foto;
 	}
 
-	public void set_deskripsi(String _deskripsi) {
-		this._deskripsi = _deskripsi;
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
-	public String get_foto() {
-		return this._foto;
+	public String getTanggalDibuat() {
+		return this.tanggalDibuat;
 	}
 
-	public void set_foto(String _foto) {
-		this._foto = _foto;
+	public void setTanggalDibuat(String tanggalDibuat) {
+		this.tanggalDibuat = tanggalDibuat;
 	}
 
-	public String get_tanggal_dibuat() {
-		return this._tanggal_dibuat;
+	public User getUser() {
+		return this.user;
 	}
 
-	public void set_tanggal_dibuat(String _tanggal_dibuat) {
-		this._tanggal_dibuat = _tanggal_dibuat;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public Collection<Komentar> get_komentar() {
-		return this._komentar;
+	public Collection<Komentar> getKomentar() {
+		return this.komentar;
 	}
 
-	public void set_komentar(Collection<Komentar> _komentar) {
-		this._komentar = _komentar;
+	public void setKomentar(Collection<Komentar> komentar) {
+		this.komentar = komentar;
 	}
 
-	public Collection<Laporan> get_laporan() {
-		return this._laporan;
+	public Collection<Laporan> getLaporan() {
+		return this.laporan;
 	}
 
-	public void set_laporan(Collection<Laporan> _laporan) {
-		this._laporan = _laporan;
+	public void setLaporan(Collection<Laporan> laporan) {
+		this.laporan = laporan;
 	}
 
-	public Collection<Kontak> get_kontak() {
-		return this._kontak;
+	public Collection<Kontak> getKontak() {
+		return this.kontak;
 	}
 
-	public void set_kontak(Collection<Kontak> _kontak) {
-		this._kontak = _kontak;
+	public void setKontak(Collection<Kontak> kontak) {
+		this.kontak = kontak;
 	}
 
-	public StatusKehilangan get_status() {
-		return this._status;
+	public StatusKehilangan getStatusKehilangan() {
+		return this.statusKehilangan;
 	}
 
-	public void set_status(StatusKehilangan _status) {
-		this._status = _status;
+	public void setStatusKehilangan(StatusKehilangan statusKehilangan) {
+		this.statusKehilangan = statusKehilangan;
 	}
 }

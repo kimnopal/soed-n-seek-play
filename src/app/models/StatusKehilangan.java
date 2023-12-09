@@ -7,39 +7,26 @@ import javax.persistence.*;
 import java.util.*;
  
 @Entity
-@Table(name = "status_kehilangan",
-		uniqueConstraints = {
-			@UniqueConstraint(columnNames = {"id"})
-		}
-)
+@Table(name = "status_kehilangan")
 public class StatusKehilangan extends Model {
-	private int _iD;
-	private String _value;
+	private String value;
 
-	@OneToMany
-	public Collection<Post> _post;
+	@OneToMany(mappedBy = "statusKehilangan")
+	public Collection<Post> post;
 
-	public int get_iD() {
-		return this._iD;
+	public String getValue() {
+		return this.value;
 	}
 
-	public void set_iD(int _iD) {
-		this._iD = _iD;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
-	public String get_value() {
-		return this._value;
+	public Collection<Post> getPost() {
+		return this.post;
 	}
 
-	public void set_value(String _value) {
-		this._value = _value;
-	}
-
-	public Collection<Post> get_post() {
-		return this._post;
-	}
-
-	public void set_post(Collection<Post> _post) {
-		this._post = _post;
+	public void setPost(Collection<Post> post) {
+		this.post = post;
 	}
 }

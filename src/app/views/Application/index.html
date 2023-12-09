@@ -1,4 +1,39 @@
-#{extends 'main.html' /}
-#{set title:'Home' /}
+#{extends 'main.html' /} #{set title:'Home' /} %{ for(post in posts) { }%
 
-#{welcome /}
+<div
+  class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0"
+  id="post"
+>
+  <div class="row align-items-center">
+    <div class="col-md-9 mb-3 mb-sm-0">
+      <h4>
+        <a href="#" class="text-primary">${post.judul}</a>
+      </h4>
+      <p class="text-sm">
+        <span class="op-6">Posted</span>
+        <span>${post.tanggalDibuat}</span>
+        <span class="op-6"> by</span>
+        <a class="text-black" href="#"></a>
+      </p>
+      <h5 class="mb-4">${post.deskripsi}</h5>
+      <div class="">
+        <p class="d-inline-block mr-4">Status :</p>
+        <span class="badge bg-danger text-bg-danger">Hilang</span>
+      </div>
+    </div>
+    <div class="col-md-3 op-7">
+      <div class="row text-center op-7">
+        <div class="col px-1">
+          <i class="ion-ios-chatboxes-outline icon-1x"></i>
+          <span class="d-block text-sm text-nowrap">122 Komentar</span>
+        </div>
+        <div class="col px-1">
+          <i class="ion-ios-eye-outline icon-1x"></i>
+          <span class="d-block text-sm text-nowrap">290 Views</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+%{ } }%

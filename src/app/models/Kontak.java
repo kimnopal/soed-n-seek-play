@@ -7,48 +7,36 @@ import javax.persistence.*;
 import java.util.*;
  
 @Entity
-@Table(name = "kontak",
-		uniqueConstraints = {
-			@UniqueConstraint(columnNames = {"id"})
-		}
-)
+@Table(name = "kontak")
 public class Kontak extends Model {
-	private int _iD;
-	private String _jenis;
-	private String _value;
+	private String jenis;
+	private String value;
 
 	@ManyToOne
-	public Post _post;
+	@JoinColumn(name = "post_id")
+	public Post post;
 
-	public int get_iD() {
-		return this._iD;
+	public String getJenis() {
+		return this.jenis;
 	}
 
-	public void set_iD(int _iD) {
-		this._iD = _iD;
+	public void setJenis(String jenis) {
+		this.jenis = jenis;
 	}
 
-	public String get_jenis() {
-		return this._jenis;
+	public String getValue() {
+		return this.value;
 	}
 
-	public void set_jenis(String _jenis) {
-		this._jenis = _jenis;
+	public void setValue(String value) {
+		this.value = value;
 	}
 
-	public String get_value() {
-		return this._value;
+	public Post getPost() {
+		return this.post;
 	}
 
-	public void set_value(String _value) {
-		this._value = _value;
-	}
-
-	public Post get_post() {
-		return this._post;
-	}
-
-	public void set_post(Post _post) {
-		this._post = _post;
+	public void setPost(Post post) {
+		this.post = post;
 	}
 }

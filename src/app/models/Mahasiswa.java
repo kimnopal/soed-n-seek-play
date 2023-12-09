@@ -7,21 +7,16 @@ import javax.persistence.*;
 import java.util.*;
  
 @Entity
-@Table(name = "mahasiswa",
-		uniqueConstraints = {
-			@UniqueConstraint(columnNames = {"id"})
-		}
-)
 @DiscriminatorValue("mahasiswa")
 public class Mahasiswa extends User {
-	private String _nim;
-	private String _jurusan;
+	private String nim;
+	private String jurusan;
 	
-	@OneToMany
-	public Collection<Komentar> _komentar;
+	@OneToMany(mappedBy = "mahasiswa")
+	public Collection<Komentar> komentar;
 
-	@OneToMany
-	public Collection<Laporan> _laporan;
+	@OneToMany(mappedBy = "mahasiswa")
+	public Collection<Laporan> laporan;
 
 	public void createComment() {
 		throw new UnsupportedOperationException();
@@ -35,35 +30,35 @@ public class Mahasiswa extends User {
 		throw new UnsupportedOperationException();
 	}
 
-	public String get_nim() {
-		return this._nim;
+	public String getNim() {
+		return this.nim;
 	}
 
-	public void set_nim(String _nim) {
-		this._nim = _nim;
+	public void setNim(String nim) {
+		this.nim = nim;
 	}
 
-	public String get_jurusan() {
-		return this._jurusan;
+	public String getJurusan() {
+		return this.jurusan;
 	}
 
-	public void set_jurusan(String _jurusan) {
-		this._jurusan = _jurusan;
+	public void setJurusan(String jurusan) {
+		this.jurusan = jurusan;
 	}
 
-	public Collection<Komentar> get_komentar() {
-		return this._komentar;
+	public Collection<Komentar> getKomentar() {
+		return this.komentar;
 	}
 
-	public void set_komentar(Collection<Komentar> _komentar) {
-		this._komentar = _komentar;
+	public void setKomentar(Collection<Komentar> komentar) {
+		this.komentar = komentar;
 	}
 
-	public Collection<Laporan> get_laporan() {
-		return this._laporan;
+	public Collection<Laporan> getLaporan() {
+		return this.laporan;
 	}
 
-	public void set_laporan(Collection<Laporan> _laporan) {
-		this._laporan = _laporan;
+	public void setLaporan(Collection<Laporan> laporan) {
+		this.laporan = laporan;
 	}
 }

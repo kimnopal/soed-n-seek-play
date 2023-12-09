@@ -7,19 +7,16 @@ import javax.persistence.*;
 import java.util.*;
  
 @Entity
-@Table(name = "user",
-		uniqueConstraints = {
-			@UniqueConstraint(columnNames = {"id"})
-		}
-)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "user_type")
 public class User extends Model {
-	private int _iD;
-	private String _nama;
-	private String _email;
-	private String _password;
-	private String _username;
+	private String nama;
+	private String email;
+	private String password;
+	private String username;
+
+	@OneToMany(mappedBy = "user")
+	public Collection<Post> post;
 
 	public void login() {
 		throw new UnsupportedOperationException();
@@ -41,43 +38,35 @@ public class User extends Model {
 		throw new UnsupportedOperationException();
 	}
 
-	public int get_iD() {
-		return this._iD;
+	public String getNama() {
+		return this.nama;
 	}
 
-	public void set_iD(int _iD) {
-		this._iD = _iD;
+	public void setNama(String nama) {
+		this.nama = nama;
 	}
 
-	public String get_nama() {
-		return this._nama;
+	public String getEmail() {
+		return this.email;
 	}
 
-	public void set_nama(String _nama) {
-		this._nama = _nama;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String get_email() {
-		return this._email;
+	public String getPassword() {
+		return this.password;
 	}
 
-	public void set_email(String _email) {
-		this._email = _email;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String get_password() {
-		return this._password;
+	public String getUsername() {
+		return this.username;
 	}
 
-	public void set_password(String _password) {
-		this._password = _password;
-	}
-
-	public String get_username() {
-		return this._username;
-	}
-
-	public void set_username(String _username) {
-		this._username = _username;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }
