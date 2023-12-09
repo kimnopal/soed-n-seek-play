@@ -51,3 +51,6 @@ SoednSeek merupakan sistem informasi yang menyediakan wadah untuk menyebarkan in
 
    - Mahasiswa Melaporkan Postingan
    ![gambar preview project](foto/SD%20Mahasiswa%20melaporkan%20postingan.jpg "Sequence Diagram Mahasiswa Melaporkan Postingan")
+
+5. ER Diagram </br>
+   ![gambar preview project](foto/soed-n-seek%20-%20ERD.jpg "ER Diagram") 
